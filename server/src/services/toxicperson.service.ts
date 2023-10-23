@@ -34,9 +34,22 @@ const createToxicPerson = async (
 // Deleting a toxic person - Logan Brassington
 
 // Delete a toxic trait from a specific person - Roshan Belary
-
+const deleteToxicTraitFromPerson = async (
+  _id: string,
+  toxicTrait: string,
+  toxicTraits: [string],
+) => {
+  const index = toxicTraits.indexOf(toxicTrait);
+  if (index > -1) {
+    toxicTraits.splice(index, 1);
+  }
+  const toxicPerson = await ToxicPerson.findByIdAndUpdate(_id, [
+    { $set: { toxictTraits: { $eq: toxicTraits } } },
+  ]).exec();
+  return toxicPerson;
+};
 // Get all toxic traits for a specific person - Charles
 
 // Create a toxic trait for a specific person - Logan Brassington
 
-export default { createToxicPerson };
+export default { createToxicPerson, deleteToxicTraitFromPerson };
