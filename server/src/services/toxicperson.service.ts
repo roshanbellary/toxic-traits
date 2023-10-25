@@ -32,6 +32,10 @@ const createToxicPerson = async (
   return user;
 };
 // Deleting a toxic person - Logan Brassington
+const deleteToxicPerson = async (_id: string) => {
+  const deletedPerson = await ToxicPerson.findByIdAndDelete(_id).exec();
+  return deletedPerson;
+};
 
 // Delete a toxic trait from a specific person - Roshan Belary
 const deleteToxicTraitFromPerson = async (
@@ -44,12 +48,42 @@ const deleteToxicTraitFromPerson = async (
     toxicTraits.splice(index, 1);
   }
   const toxicPerson = await ToxicPerson.findByIdAndUpdate(_id, [
-    { $set: { toxictTraits: { $eq: toxicTraits } } },
+    { $set: { toxicTraits: { $eq: toxicTraits } } },
   ]).exec();
   return toxicPerson;
 };
 // Get all toxic traits for a specific person - Charles
+const getToxicTraitsFromPerson = async (_id: string) => {
+  const toxicTraits = await ToxicPerson.findById(_id, 'toxicTraits').exec();
+  return toxicTraits;
+};
 
 // Create a toxic trait for a specific person - Logan Brassington
+const addToxicTraitToPerson = async (_id: string, toxicTrait: string) => {
+  const toxicPerson = await ToxicPerson.findByIdAndUpdate(
+    _id,
+    { $push: { toxicTraits: toxicTrait } },
+    { new: true },
+  ).exec();
+  return toxicPerson;
+};
 
-export default { createToxicPerson, deleteToxicTraitFromPerson };
+const getAllToxicPeople = async () => {
+  const toxicPeople = await ToxicPerson.find().exec();
+  return toxicPeople;
+};
+
+const getToxicPersonById = async (id: string) => {
+  const toxicPerson = await ToxicPerson.findById(id).exec();
+  return toxicPerson;
+};
+
+export {
+  createToxicPerson,
+  deleteToxicPerson,
+  deleteToxicTraitFromPerson,
+  getToxicTraitsFromPerson,
+  addToxicTraitToPerson,
+  getAllToxicPeople,
+  getToxicPersonById,
+};

@@ -20,6 +20,8 @@ import RegisterPage from './Authentication/RegisterPage';
 import LoginPage from './Authentication/LoginPage';
 import EmailResetPasswordPage from './Authentication/EmailResetPasswordPage';
 import ResetPasswordPage from './Authentication/ResetPasswordPage';
+import ToxicPeoplePage from './ToxicPeople/ToxicPeoplePage';
+import ToxicPersonDetailsPage from './ToxicPeople/ToxicPersonDetailsPage';
 
 function App() {
   return (
@@ -45,6 +47,11 @@ function App() {
                     <Route
                       path="/reset-password/:token"
                       element={<ResetPasswordPage />}
+                    />
+                    <Route path="/toxicpeople" element={<ToxicPeoplePage />} />
+                    <Route
+                      path="/toxicpeople/:id"
+                      element={<ToxicPersonDetailsPage />}
                     />
                   </Route>
                   {/* Routes accessed only if user is authenticated */}
