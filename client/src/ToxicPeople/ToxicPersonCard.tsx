@@ -16,9 +16,10 @@ function ToxicPersonCard({ toxicPerson, onClick }: IToxicPersonCardProps) {
     <Card onClick={onClick}>
       <CardMedia
         component="img"
-        height="140"
-        image={toxicPerson.pictureUrl}
+        height="200"
+        image={`${toxicPerson.pictureUrl}`}
         alt={`${toxicPerson.firstName} ${toxicPerson.lastName}`}
+        sx={{ objectFit: 'contain' }}
       />
       <CardContent>
         <Typography variant="h5" component="h2">

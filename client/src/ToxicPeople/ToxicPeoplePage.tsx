@@ -67,7 +67,7 @@ function ToxicPeoplePage() {
           ) : (
             toxicPeopleList.map((toxicPerson: IToxicPerson) => (
               // eslint-disable-next-line
-              <Grid item key={toxicPerson._id}>
+              <Grid item key={toxicPerson._id} xs={4}>
                 <ToxicPersonCard
                   toxicPerson={toxicPerson}
                   // eslint-disable-next-line
