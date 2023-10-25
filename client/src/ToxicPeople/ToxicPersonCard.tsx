@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import IToxicPerson from '../util/types/toxicperson';
@@ -24,7 +25,14 @@ function ToxicPersonCard({ toxicPerson, onClick }: IToxicPersonCardProps) {
           {toxicPerson.firstName} {toxicPerson.lastName}
         </Typography>
         <Typography variant="body1" component="p">
-          {toxicPerson.toxicTraits.join(', ')}
+          <ol>
+            {toxicPerson.toxicTraits.length > 0 ? (
+              toxicPerson.toxicTraits.map((v) => <li>{v}</li>)
+            ) : (
+              // eslint-disable-next-line prettier/prettier
+              <div />
+            )}
+          </ol>
         </Typography>
       </CardContent>
     </Card>
