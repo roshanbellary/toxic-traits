@@ -27,7 +27,9 @@ const createToxicPerson = async (
     );
     res.status(StatusCode.CREATED).json(createdToxicPerson);
   } catch (error) {
-    next(ApiError.internal('Unable to create toxic person'));
+    next(
+      ApiError.internal(`Unable to create toxic person ${req.body.firstName}`),
+    );
   }
 };
 
@@ -49,7 +51,7 @@ const deleteToxicPersonById = async (
     }
     res.status(StatusCode.OK).json(deletedToxicPerson);
   } catch (error) {
-    next(ApiError.internal('Unable to delete toxic person'));
+    next(ApiError.internal('Unable to delete toxic person '));
   }
 };
 

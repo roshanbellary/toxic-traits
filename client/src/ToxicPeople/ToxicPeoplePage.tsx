@@ -15,19 +15,11 @@ function ToxicPeoplePage() {
   const navigate = useNavigate();
 
   const [toxicPeopleList, setToxicPeopleList] = useState<IToxicPerson[]>([]);
-  const toxicPeople = useData('toxicpeople/');
+  const toxicPeople = useData('toxicperson/');
 
   const handleCardClick = (id: string) => {
     navigate(`/toxicpeople/${id}`);
   };
-
-  //   const filteredToxicPeople = toxicPeople?.data.filter(
-  //     (toxicPerson: IToxicPerson) =>
-  //       toxicPerson.firstName
-  //         .toLowerCase()
-  //         .concat(' ', toxicPerson.lastName.toLowerCase())
-  //         .includes(searchTerm.toLowerCase()),
-  //   );
 
   useEffect(() => {
     if (toxicPeople?.data) {
@@ -74,12 +66,12 @@ function ToxicPeoplePage() {
             </Grid>
           ) : (
             toxicPeopleList.map((toxicPerson: IToxicPerson) => (
-              <Grid item key={toxicPerson.id}>
+              // eslint-disable-next-line
+              <Grid item key={toxicPerson._id}>
                 <ToxicPersonCard
-                  // name={toxicPerson.firstName.concat(' ', toxicPerson.lastName)}
-                  // toxicTraits={toxicPerson.toxicTraits}
                   toxicPerson={toxicPerson}
-                  onClick={() => handleCardClick(toxicPerson.id)}
+                  // eslint-disable-next-line
+                  onClick={() => handleCardClick(toxicPerson._id)}
                 />
               </Grid>
             ))

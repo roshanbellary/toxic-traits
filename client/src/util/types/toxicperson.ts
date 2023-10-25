@@ -2,7 +2,7 @@
  * Interface for the user data type return from the backend
  */
 interface IToxicPerson {
-  id: string;
+  _id: string;
   firstName: string;
   lastName: string;
   pictureUrl: string;

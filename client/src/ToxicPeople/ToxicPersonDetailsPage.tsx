@@ -9,7 +9,7 @@ function ToxicPersonDetailsPage() {
   const { id } = useParams();
   const [toxicPerson, setToxicPerson] = useState<IToxicPerson | null>(null);
 
-  const toxicPeople = useData(`toxicpeople/${id}`);
+  const toxicPeople = useData(`toxicperson/${id}`);
 
   useEffect(() => {
     if (toxicPeople?.data) {
