@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import IToxicPerson from '../util/types/toxicperson';
+import './ToxicPersonCard.css';
 
 interface IToxicPersonCardProps {
   toxicPerson: IToxicPerson;
@@ -13,7 +14,7 @@ interface IToxicPersonCardProps {
  */
 function ToxicPersonCard({ toxicPerson, onClick }: IToxicPersonCardProps) {
   return (
-    <Card onClick={onClick}>
+    <Card className="toxic-person-card" onClick={onClick}>
       <CardMedia
         component="img"
         height="200"
